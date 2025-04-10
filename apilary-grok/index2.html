@@ -24,6 +24,7 @@
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
+            box-sizing: border-box; /* Ensures padding doesn’t push content beyond width */
         }
         .logo {
             font-size: 1.5rem;
@@ -43,13 +44,15 @@
             color: #00A3FF;
         }
         .header-cta {
-            padding: 10px 25px;
+            padding: 10px 30px; /* Increased right/left padding for better text fit */
             background: #00A3FF;
             color: #FFFFFF;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s;
+            white-space: nowrap; /* Prevents text wrapping */
+            margin-right: 10px; /* Adds space on the right to avoid edge truncation */
         }
         .header-cta:hover {
             background: #0088CC;
@@ -79,7 +82,7 @@
             margin: 20px 0;
         }
         .cta-button {
-            padding: 15px 40px;
+            padding: 15px 20px;
             background: #00A3FF;
             color: #FFFFFF;
             text-decoration: none;
@@ -238,6 +241,7 @@
             margin: 0 0 20px;
         }
         .pricing-card .cta-button {
+            padding: 15px 0px;
             display: inline-block;
             width: 100%;
         }
@@ -297,8 +301,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Test APIs with Precision</h1>
-            <p>Fast. Efficient. Powered by Scenario Files.</p>
-            <p>Fast. Flawless. Apilary.</p>
+            <!-- <p>Fast. Efficient. Powered by Scenario Files.</p> -->
+            <!-- <p>Fast. Flawless. Apilary.</p> -->
+            <p>Fast. Efficient. Apilary.</p>
             <a href="#" class="cta-button">Get Started</a>
         </div>
     </section>
