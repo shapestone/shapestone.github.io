@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apilary - Test APIs with Precision</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #FFFFFF;
+            color: #333333;
+            line-height: 1.6;
+        }
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #FFFFFF;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo span {
+            color: #00A3FF;
+        }
+        nav a {
+            color: #333333;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #00A3FF;
+        }
+        .header-cta {
+            padding: 10px 25px;
+            background: #00A3FF;
+            color: #FFFFFF;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .header-cta:hover {
+            background: #0088CC;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 163, 255, 0.1), rgba(255, 255, 255, 0.9)), url('apilary-interface.jpg') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #666666;
+            margin: 20px 0;
+        }
+        .cta-button {
+            padding: 15px 40px;
+            background: #00A3FF;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .cta-button:hover {
+            background: #0088CC;
+            transform: scale(1.05);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .features h2, .how-it-works h2, .pricing h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+        .features-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #FFFFFF;
+            padding: 30px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.4s; }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #00A3FF;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+        .feature-card p {
+            font-size: 1rem;
+            color: #666666;
+            margin: 0;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 20px;
+            text-align: center;
+            background: #F9F9F9;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            opacity: 0;
+            animation: slideIn 0.5s ease forwards;
+        }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.4s; }
+        .step.reverse { flex-direction: row-reverse; animation: slideInRight 0.5s ease forwards; }
+        .step-image {
+            width: 50%;
+            padding: 20px;
+        }
+        .step-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .step-text {
+            width: 50%;
+            padding: 20px;
+            text-align: left;
+        }
+        .step-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #00A3FF;
+            margin-bottom: 10px;
+        }
+        .step-text h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 0 15px;
+        }
+        .step-text p {
+            font-size: 1rem;
+            color: #666666;
+            margin: 0 0 20px;
+        }
+        .step-text a {
+            color: #00A3FF;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .step-text a:hover {
+            color: #0088CC;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .pricing-card {
+            background: #FFFFFF;
+            padding: 40px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 0 20px;
+        }
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00A3FF;
+            margin: 0 0 20px;
+        }
+        .pricing-card p {
+            font-size: 1rem;
+            color: #666666;
+            margin: 0 0 20px;
+        }
+        .pricing-card .cta-button {
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #333333;
+            color: #FFFFFF;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #00A3FF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #FFFFFF;
+        }
+        footer p {
+            margin: 20px 0 0;
+            font-size: 0.9rem;
+            color: #AAAAAA;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Apil<span>ary</span></div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Docs</a>
+            <a href="#">Pricing</a>
+            <a href="#">Contact</a>
+        </nav>
+        <a href="#" class="header-cta">Try Now</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Test APIs with Precision</h1>
+            <p>Fast. Efficient. Powered by Scenario Files.</p>
+            <p>Fast. Flawless. Apilary.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="features">
+        <h2>Why Apilary?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i>📄</i>
+                <h3>Document & Test in One</h3>
+                <p>Create scenario files to define and test APIs seamlessly.</p>
+            </div>
+            <div class="feature-card">
+                <i>⏱️</i>
+                <h3>Results in Seconds</h3>
+                <p>Run comprehensive API tests faster than ever.</p>
+            </div>
+            <div class="feature-card">
+                <i>👥</i>
+                <h3>Built for Collaboration</h3>
+                <p>Empower developers, QA, and product owners alike.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="step">
+            <div class="step-image">
+                <img src="scenario-file-mockup.jpg" alt="Scenario File">
+            </div>
+            <div class="step-text">
+                <div class="step-number">Step 1</div>
+                <h3>Write a Scenario File</h3>
+                <p>Define your API tests in a simple, reusable file.</p>
+                <a href="#">See Sample File</a>
+            </div>
+        </div>
+        <div class="step reverse">
+            <div class="step-image">
+                <img src="apilary-engine.jpg" alt="Apilary Engine">
+            </div>
+            <div class="step-text">
+                <div class="step-number">Step 2</div>
+                <h3>Run it in Apilary</h3>
+                <p>Upload your file and let Apilary do the heavy lifting.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-image">
+                <img src="results-dashboard.jpg" alt="Results">
+            </div>
+            <div class="step-text">
+                <div class="step-number">Step 3</div>
+                <h3>Get Results Instantly</h3>
+                <p>Analyze results and optimize your APIs in real time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <h2>Pricing</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Free</h3>
+                <div class="price">$0</div>
+                <p>Basic API testing for individuals.</p>
+                <a href="#" class="cta-button">Sign Up</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Pro</h3>
+                <div class="price">$29/mo</div>
+                <p>Advanced features for teams.</p>
+                <a href="#" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <p>Tailored solutions for large orgs.</p>
+                <a href="#" class="cta-button">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <a href="#">Docs</a>
+            <a href="#">Blog</a>
+            <a href="#">Support</a>
+            <a href="#">GitHub</a>
+        </div>
+        <p>&copy; 2025 Apilary. All rights reserved.</p>
+    </footer>
+</body>
+</html>
