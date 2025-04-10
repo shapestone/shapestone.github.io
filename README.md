@@ -1,1 +1,1 @@
-# shapestone.github.io
+# Website Designs demoed through github pages
