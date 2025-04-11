@@ -24,14 +24,17 @@
             align-items: center;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            box-sizing: border-box; /* Ensures padding doesn’t push content beyond width */
+            box-sizing: border-box;
         }
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-        }
-        .logo span {
             color: #00A3FF;
+        }
+        .logo .bullet {
+            margin: 0 2px;
+            font-size: 1.2rem;
+            vertical-align: middle;
         }
         nav a {
             color: #333333;
@@ -44,15 +47,15 @@
             color: #00A3FF;
         }
         .header-cta {
-            padding: 10px 30px; /* Increased right/left padding for better text fit */
+            padding: 10px 30px;
             background: #00A3FF;
             color: #FFFFFF;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: background 0.3s;
-            white-space: nowrap; /* Prevents text wrapping */
-            margin-right: 10px; /* Adds space on the right to avoid edge truncation */
+            white-space: nowrap;
+            margin-right: 10px;
         }
         .header-cta:hover {
             background: #0088CC;
@@ -286,7 +289,9 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">api•<span>lary</span></div>
+        <div class="logo">
+            <span class="api">api</span><span class="bullet">·</span><span class="lary">lary</span>
+        </div>
         <nav>
             <a href="#">Home</a>
             <a href="#">Features</a>
